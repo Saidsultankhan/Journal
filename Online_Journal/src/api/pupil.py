@@ -15,24 +15,24 @@ class PupilsViewSet(viewsets.ModelViewSet):
     queryset = Pupil.objects.all()
 
     def get_serializer_class(self):
-        if self.action == 'retrieve':
-            return PupilDetailSerializer
-        elif self.action == 'list':
-            return PupilListSerializer
-        elif self.action == 'update':
-            return PupilUpdateSerializer
-        elif self.action == 'create':
-            return PupilCreateSerializer
-        elif self.action == 'delete':
-            return PupilDeleteSerializer
+        serializers = {
+            'retrieve': PupilDetailSerializer,
+            'list': PupilListSerializer,
+            'update': PupilUpdateSerializer,
+            'create': PupilCreateSerializer,
+            'delete': PupilDeleteSerializer,
+        }
+        return serializers.get(self.action)
 
     def get_permissions(self):
+        permission_classes = []
         if self.action == 'retrieve':
-            return [IsTeacherOrPupilOrParentOrAdmin()]
+            permission_classes = [IsTeacherOrPupilOrParentOrAdmin]
         elif self.action == 'list':
-            return [IsTeacherOrMentorOrAdmin()]
+            permission_classes = [IsTeacherOrMentorOrAdmin]
         elif self.action == 'create':
-            return [IsAdminUser()]
+            permission_classes = [IsAdminUser]
         elif self.action == 'update':
-            return [IsAdminUser()]
-        return super().get_permissions()
+            permission_classes = [IsAdminUser]
+
+        return [permission_class() for permission_class in permission_classes]
