@@ -15,25 +15,24 @@ class DairyViewSet(viewsets.ModelViewSet):
     queryset = DairyOfClass.objects.all()
 
     def get_serializer_class(self):
-        if self.action == 'list':
-            return DairyOfClassSerializer
-        elif self.action == 'retrieve':
-            return DairyDetailSerializer
-        elif self.action == 'create':
-            return DairyCreateSerializer
-        elif self.action == 'update':
-            return DairyUpdateSerializer
-        elif self.action == 'delete':
-            return DairyDeleteSerializer
+        serializers = {
+            'retrieve': DairyDetailSerializer,
+            'create': DairyCreateSerializer,
+            'list': DairyOfClassSerializer,
+            'delete': DairyDeleteSerializer,
+            'update': DairyUpdateSerializer
+        }
+        return serializers.get(self.action)
 
     def get_permissions(self):
+        permission_classes = []
         if self.action == 'retrieve':
-            # mentor klassa ili prepod opr predmeta
-            return [IsTeacherOrMentorOrAdmin()]
+            permission_classes = [IsTeacherOrMentorOrAdmin]
         elif self.action == 'create':
-            return [TeacherOrAdmin()]
+            permission_classes = [TeacherOrAdmin]
         elif self.action == 'update':
-            return [IsAdminUser()]
+            permission_classes = [IsAdminUser]
         elif self.action == 'list':
-            return [IsTeacherOrMentorOrAdmin()]
-        return super().get_permissions()
+            permission_classes = [IsTeacherOrMentorOrAdmin]
+
+        return [permission_class() for permission_class in permission_classes]

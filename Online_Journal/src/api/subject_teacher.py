@@ -15,26 +15,25 @@ class SubjectTeacherViewSet(viewsets.ModelViewSet):
     queryset = SubjectTeacher.objects.all().order_by('id')
 
     def get_serializer_class(self):
-        if self.action == 'list':
-            return SubjectTeacherListSerializer
-        elif self.action == 'retrieve':
-            return SubjectTeacherDetailSerializer
-        elif self.action == 'create':
-            return SubjectTeacherCreateSerializer
-        elif self.action == 'update':
-            return SubjectTeacherUpdateSerializer
-        elif self.action == 'delete':
-            return SubjectTeacherDeleteSerializer
+        serializers = {
+            'list': SubjectTeacherListSerializer,
+            'retrieve': SubjectTeacherDetailSerializer,
+            'create': SubjectTeacherCreateSerializer,
+            'update': SubjectTeacherUpdateSerializer,
+            'delete': SubjectTeacherDeleteSerializer
+        }
+        return serializers.get(self.action)
 
     def get_permissions(self):
+        permission_classes = []
         if self.action == 'retrieve':
-            # admin, teacher of this subject
-            return [TeacherOrAdmin()]
+            permission_classes = [TeacherOrAdmin]
         elif self.action == 'list':
-            return [IsAdminUser()]
+            permission_classes = [IsAdminUser]
         elif self.action == 'create':
-            return [IsAdminUser()]
+            permission_classes = [IsAdminUser]
         elif self.action == 'update':
-            return [IsAdminUser()]
-        return super().get_permissions()
+            permission_classes = [IsAdminUser]
+
+        return [permission_class() for permission_class in permission_classes]
 

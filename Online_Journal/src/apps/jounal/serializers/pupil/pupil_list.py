@@ -5,7 +5,7 @@ from django.db.models import Avg
 
 
 class PupilListSerializer(PupilBaseSerializer):
-    grade = serializers.CharField(source='grade.__str__')
+    grade = serializers.SerializerMethodField()
 
     class Meta:
         model = Pupil
@@ -14,3 +14,8 @@ class PupilListSerializer(PupilBaseSerializer):
     def get_average_mark(self, obj):
         mark = DairyOfClass.objects.filter(pupil=obj).values_list('mark', flat=True)
         return obj.dairy_pupil.aggregate(average_mark=Avg('mark'))['average_mark'] if mark else 0
+
+    def get_grade(self, obj):
+        if obj.grade:
+            return str(obj.grade)
+        return f'Has not been added yet'
