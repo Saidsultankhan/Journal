@@ -15,4 +15,6 @@ class ClassListSerializer(serializers.ModelSerializer):
         return obj.class_pupil.count()
 
     def get_mentor(self, obj):
-        return obj.teacher.user.username
+        if obj.teacher:
+            return obj.teacher.user.username
+        return f'There is no teacher yet'
