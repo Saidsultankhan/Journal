@@ -7,8 +7,8 @@ admin.site.register(SubjectTeacher)
 admin.site.register(Parent)
 
 
-@admin.register(Class)
-class ClassAdmin(admin.ModelAdmin):
+@admin.register(Grade)
+class GradeAdmin(admin.ModelAdmin):
     list_display = ['grade', 'teacher', 'id']
 
     def grade(self, obj):

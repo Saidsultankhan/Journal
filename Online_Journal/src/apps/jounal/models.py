@@ -36,7 +36,7 @@ class Parent(Name):
 
 class Pupil(Name):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='pupil_user')
-    grade = models.ForeignKey('Class', related_name='class_pupil', on_delete=models.SET_NULL, null=True, blank=True)
+    grade = models.ForeignKey('Grade', related_name='class_pupil', on_delete=models.SET_NULL, null=True, blank=True)
     parent = models.ForeignKey('Parent', related_name='pupil_parent', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
@@ -53,7 +53,7 @@ class DairyOfClass(models.Model):
     subject = models.ForeignKey('Subject', related_name='subject', on_delete=models.CASCADE)
     quarter = models.PositiveSmallIntegerField(choices=QUARTER_CHOICES)
     grade = models.ForeignKey(
-        'Class',
+        'Grade',
         on_delete=models.SET_NULL,
         related_name='dairy_of_class',
         null=True,
@@ -78,7 +78,7 @@ class DairyOfClass(models.Model):
 #         verbose_name_plural = 'Schools'
 
 
-class Class(models.Model):
+class Grade(models.Model):
     number = models.SmallIntegerField()
     type = models.CharField(max_length=1, choices=TYPE_CHOICES)
     # Should be OneToOneField instead of ForeignKey
@@ -107,7 +107,7 @@ class Subject(Name):
 class SubjectTeacher(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='subject_teacher_teacher')
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='subject_teacher_subject')
-    grade = models.ForeignKey(Class, on_delete=models.CASCADE, related_name='subject_teacher_class')
+    grade = models.ForeignKey(Grade, on_delete=models.CASCADE, related_name='subject_teacher_class')
 
     def __str__(self):
         return f'{self.subject}-{self.teacher}'
