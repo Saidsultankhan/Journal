@@ -35,3 +35,4 @@ class TeacherViewSet(viewsets.ModelViewSet):
         elif self.action == 'list':
             permission_classes = [IsAdminUser]
         return [permission_class() for permission_class in permission_classes]
+

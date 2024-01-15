@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from src.apps.jounal.models import Teacher, SubjectTeacher
+from django.contrib.auth.models import User
 
 
 class TeacherDetailSerializer(serializers.ModelSerializer):
@@ -7,10 +8,11 @@ class TeacherDetailSerializer(serializers.ModelSerializer):
     grade = serializers.SerializerMethodField()
     mentor_of = serializers.SerializerMethodField()
     subjects = serializers.SerializerMethodField()
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
 
     class Meta:
         model = Teacher
-        fields = ('id', 'name', 'grade', 'subjects', 'mentor_of')
+        fields = ('id', 'name', 'user', 'grade', 'subjects', 'mentor_of')
 
     def get_name(self, obj):
         return obj.user.username

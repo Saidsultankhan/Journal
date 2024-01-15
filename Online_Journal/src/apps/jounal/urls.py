@@ -15,6 +15,7 @@ urlpatterns = [
     path('parent_update/<int:pk>/', ParentsViewSet.as_view({'patch': 'update'})),
     path('parent_delete/<int:pk>/', ParentsViewSet.as_view({'delete': 'destroy'})),
     path('parent_detail/<int:pk>/', ParentsViewSet.as_view({'get': 'retrieve'})),
+    path('parents/', ParentsViewSet.as_view({'get': 'list'})),
 
     path('pupils/', PupilsViewSet.as_view({'get': 'list'})),
     path('pupil/<int:pk>/', PupilsViewSet.as_view({'get': 'retrieve'})),
@@ -24,7 +25,7 @@ urlpatterns = [
 
     path('classes/', GradeViewSet.as_view({'get': 'list'})),
     path('class_create/', GradeViewSet.as_view({'post': 'create'})),
-    path('class_update/<int:pk>', GradeViewSet.as_view({'patch': 'update'})),
+    path('class_update/<int:pk>/', GradeViewSet.as_view({'patch': 'update'})),
     path('class/<int:pk>/', GradeViewSet.as_view({'get': 'retrieve'})),
 
     path('subjects/', SubjectViewSet.as_view({'get': 'list'})),

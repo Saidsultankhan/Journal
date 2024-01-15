@@ -1,26 +1,27 @@
 import factory
 from django.contrib.auth.models import User
 from faker import Faker
+from itertools import cycle
 from src.apps.jounal.static_data import (
     MARK_CHOICES,
     QUARTER_CHOICES,
     TYPE_CHOICES
 )
-
 from src.apps.jounal.models import (
-    Pupil,
     Parent,
+    Pupil,
     Teacher,
     Grade,
 )
 
 fake = Faker()
 
+
 class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = User
 
-    username = fake.user_name()
+    username = factory.Sequence(lambda n: f'user_{n}')
     password = '23456789'
     email = fake.email()
     is_staff = False
@@ -47,7 +48,7 @@ class GradeFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Grade
 
-    number = fake.random_element(elements=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+    number = factory.Iterator(cycle(range(1, 12)))
     type = fake.random_element(elements=[choice[0] for choice in TYPE_CHOICES])
     teacher = factory.SubFactory(TeacherFactory)
 

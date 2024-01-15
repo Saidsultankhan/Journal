@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import *
 
-admin.site.register(Teacher)
 admin.site.register(Subject)
 admin.site.register(SubjectTeacher)
 admin.site.register(Parent)
@@ -13,6 +12,11 @@ class GradeAdmin(admin.ModelAdmin):
 
     def grade(self, obj):
         return str(obj)
+
+
+@admin.register(Teacher)
+class GradeAdmin(admin.ModelAdmin):
+    list_display = ['id', 'user']
 
 
 @admin.register(DairyOfClass)

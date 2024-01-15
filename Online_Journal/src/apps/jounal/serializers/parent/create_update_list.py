@@ -3,7 +3,7 @@ from src.apps.jounal.models import Parent
 from django.contrib.auth.models import User
 
 
-class ParentCreateUpdateDeleteSerializer(serializers.ModelSerializer):
+class ParentCreateUpdateDeleteListSerializer(serializers.ModelSerializer):
     name_uz = serializers.CharField(required=False)
     name_en = serializers.CharField(required=False)
     name_ru = serializers.CharField(required=False)

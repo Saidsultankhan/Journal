@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from src.apps.jounal.models import Parent
 from src.apps.jounal.serializers.parent import (
-    ParentCreateUpdateDeleteSerializer,
+    ParentCreateUpdateDeleteListSerializer,
     ParentDetailSerializer
 )
 
@@ -12,10 +12,10 @@ class ParentsViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         serializers = {
             'retrieve': ParentDetailSerializer,
-            'create': ParentCreateUpdateDeleteSerializer,
-            'update': ParentCreateUpdateDeleteSerializer,
-            'delete': ParentCreateUpdateDeleteSerializer,
-            # 'list': ClassListSerializer,
+            'create': ParentCreateUpdateDeleteListSerializer,
+            'update': ParentCreateUpdateDeleteListSerializer,
+            'delete': ParentCreateUpdateDeleteListSerializer,
+            'list': ParentCreateUpdateDeleteListSerializer,
 
         }
         return serializers.get(self.action)
