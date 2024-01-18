@@ -1,8 +1,13 @@
 from rest_framework import serializers
 from src.apps.jounal.models import Pupil
+from django.contrib.auth.models import User
 
 
 class PupilUpdateSerializer(serializers.ModelSerializer):
+    name_uz = serializers.CharField(required=False)
+    name_en = serializers.CharField(required=False)
+    name_ru = serializers.CharField(required=False)
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), required=False)
 
     class Meta:
         model = Pupil

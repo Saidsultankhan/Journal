@@ -13,7 +13,6 @@ from rest_framework.permissions import IsAdminUser
 
 class GradeViewSet(viewsets.ModelViewSet):
     queryset = Grade.objects.all()
-    serializer_class = GradeUpdateSerializer
 
     def get_serializer_class(self):
         serializers = {
