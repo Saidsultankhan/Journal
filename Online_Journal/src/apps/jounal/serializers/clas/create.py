@@ -9,8 +9,8 @@ class GradeCreateSerializer(serializers.ModelSerializer):
         model = Grade
         fields = ('number', 'type', 'mentor')
 
-    def create(self, validated_data):
-        mentor = validated_data.pop('teacher')
-        print(mentor)
-        new_class = Grade.objects.create(teacher=mentor, **validated_data)
-        return new_class
+    # def create(self, validated_data):
+    #     mentor = validated_data.pop('teacher')
+    #     print(mentor)
+    #     new_class = Grade.objects.create(teacher=mentor, **validated_data)
+    #     return new_class

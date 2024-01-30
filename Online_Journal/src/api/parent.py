@@ -4,6 +4,11 @@ from src.apps.jounal.serializers.parent import (
     ParentCreateUpdateDeleteListSerializer,
     ParentDetailSerializer
 )
+from rest_framework.permissions import (
+    IsAdminUser,
+    IsAuthenticated
+)
+from src.apps.jounal.permissions import IsTeacherOrMentorOrAdmin
 
 
 class ParentsViewSet(viewsets.ModelViewSet):
@@ -20,14 +25,11 @@ class ParentsViewSet(viewsets.ModelViewSet):
         }
         return serializers.get(self.action)
 
-    # def get_permissions(self):
-    #     permission_classes = []
-        # if self.action == 'retrieve':
-            # permission_classes = [IsTeacherOrMentorOrAdmin]
-        # elif self.action == 'create':
-        #     permission_classes = [IsAdminUser]
-        # elif self.action == 'update':
-            # permission_classes = [IsAdminUser]
-        # elif self.action == 'list':
-        #     permission_classes = [IsAdminUser]
-        # return [permission_class() for permission_class in permission_classes]
+    def get_permissions(self):
+        permission_classes = []
+        if self.action == 'retrieve':
+            permission_classes = [IsAuthenticated, IsAdminUser or IsTeacherOrMentorOrAdmin]
+        elif self.action in ['create', 'update', 'list', 'destroy']:
+            permission_classes = [IsAdminUser]
+
+        return [permission_class() for permission_class in permission_classes]

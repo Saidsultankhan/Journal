@@ -16,7 +16,7 @@ class PupilDetailSerializer(PupilBaseSerializer):
 
     class Meta:
         model = Pupil
-        fields = ('id', 'name_en', 'name_ru', 'name_uz', 'parent', 'grade', 'average_mark', 'pupils_dairy', 'teachers')
+        fields = ('id', 'name_en', 'name_ru', 'name_uz', 'parent', 'grade', 'average_mark', 'pupils_dairy', 'teachers', 'user')
 
     def get_parent(self, obj):
         return obj.parent.user.username

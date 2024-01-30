@@ -2,15 +2,30 @@ import pytest
 from rest_framework.test import APIClient
 
 
-api_client = APIClient()
-
-
+@pytest.mark.parametrize(
+    'client, status_code, payload',
+    [
+        ('parent_client', 403, "FORBIDDEN"),
+        ('admin_client', 200, "SUCCESS"),
+        ('admin_client', 404, "NOT_FOUND"),
+        ('un_authorized_client', 401, "UNAUTHORIZED"),
+    ]
+)
 @pytest.mark.django_db
-def test_subject_get(admin_create, subject_create, user_login):
-    token = user_login
-    api_client.force_authenticate(user=admin_create)
-    api_client.credentials(HTTP_AUTHORIZATION=f'Token {token}')
-    response = api_client.get(f'/api/v1/subject/{subject_create.id}/')
+def test_subject_get(
+        request,
+        client,
+        status_code,
+        payload,
+        subject_create,
+):
+    auth_client_data = request.getfixturevalue(client)
+    auth_client = auth_client_data['client']
 
-    assert response.status_code == 200
+    if payload == 'NOT_FOUND':
+        response = auth_client.get(f'/api/v1/subject/{subject_create.id + 1}/')
+    else:
+        response = auth_client.get(f'/api/v1/subject/{subject_create.id}/')
+
+    assert response.status_code == status_code
 

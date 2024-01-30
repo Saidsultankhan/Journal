@@ -17,5 +17,4 @@ def grade_create(grade_factory):
 @pytest.fixture
 def grades_list(grade_factory):
     grades = grade_factory.create_batch(3)
-
     return grades

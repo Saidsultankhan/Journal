@@ -5,15 +5,43 @@ from rest_framework.test import APIClient
 api_client = APIClient()
 
 
+@pytest.mark.parametrize(
+    'client, status_code, payload',
+    [
+        ('parent_client', 403, "FORBIDDEN"),
+        ('admin_client', 200, "SUCCESS"),
+        ('admin_client', 400, "BAD_REQUEST"),
+        ('un_authorized_client', 401, "UNAUTHORIZED"),
+    ]
+)
 @pytest.mark.django_db
-def test_grade_update(admin_create, grade_create, teacher_create, user_login):
-    token = user_login
-    api_client.force_authenticate(user=admin_create)
-    api_client.credentials(HTTP_AUTHORIZATION=f'Token {token}')
-    data = {
-        "teacher": teacher_create.id
-    }
-    response = api_client.patch(f'/api/v1/class_update/{grade_create.id}/', data)
+def test_grade_update(
+        request,
+        client,
+        status_code,
+        payload,
+        admin_create,
+        teacher_create,
+        grade_create
+):
+    auth_client_data = request.getfixturevalue(client)
+    auth_client = auth_client_data["client"]
 
-    assert response.data['teacher'] == teacher_create.id
+    statuses = ['FORBIDDEN', 'BAD_REQUEST', 'SUCCESS', 'UNAUTHORIZED']
+
+    datas = {}
+    number = 11
+
+    for status in statuses:
+        datas[status] = {
+            'number': number,
+            'teacher': teacher_create.id
+        }
+        number -= 1
+        if status == 'BAD_REQUEST':
+            datas[status]['teacher'] = 1000
+
+    response = auth_client.patch(f'/api/v1/class_update/{grade_create.id}/', datas[payload])
+
+    assert response.status_code == status_code
     

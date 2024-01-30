@@ -7,7 +7,6 @@ from src.apps.jounal.serializers import (
     SubjectTeacherUpdateSerializer,
     SubjectTeacherDeleteSerializer
 )
-from src.apps.jounal.permissions import TeacherOrAdmin
 from rest_framework.permissions import IsAdminUser
 
 
@@ -27,13 +26,8 @@ class SubjectTeacherViewSet(viewsets.ModelViewSet):
     def get_permissions(self):
         permission_classes = []
         if self.action == 'retrieve':
-            permission_classes = [TeacherOrAdmin]
-        elif self.action == 'list':
             permission_classes = [IsAdminUser]
-        elif self.action == 'create':
-            permission_classes = [IsAdminUser]
-        elif self.action == 'update':
+        elif self.action in ['list', 'create', 'update', 'destroy']:
             permission_classes = [IsAdminUser]
 
         return [permission_class() for permission_class in permission_classes]
-

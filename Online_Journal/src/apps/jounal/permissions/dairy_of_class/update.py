@@ -1,20 +1,24 @@
-
 from rest_framework import permissions
-# from src.apps.jounal.models import DairyOfClass
 
 
 class DairyTeacher(permissions.BasePermission):
 
+    def has_permission(self, request, view):
+        if request.user.is_authenticated:
+            return True
+
     def has_object_permission(self, request, view, obj):
+        return (
+                request.user.is_authenticated and
+                (request.user.is_staff or obj.subject.subject_teacher_subject.filter(
+                    teacher__user=request.user,
+                    grade=obj.grade).exists()
+                 )
+        )
 
-        if not request.user.is_authenticated:
-            return False
-        if request.user.is_staff:
-            return True
-        # if obj.subject.subject_teacher_subject.teacher == request.user:
-        #     return True
-        if obj.subject.subject_teacher_subject.filter(teacher__user=request.user, grade=obj.grade):
-            return True
-        # if SubjectTeacher.objects.filter(teacher__user=request.user, subject=obj).exists():
-        #     return True
 
+class DairyListTeacher(permissions.BasePermission):
+    def has_permission(self, request, view):
+
+        if request.user.teacher_user.first() or request.user.is_staff:
+            return True

@@ -1,9 +1,20 @@
 from django.contrib import admin
 from .models import *
 
-admin.site.register(Subject)
-admin.site.register(SubjectTeacher)
 admin.site.register(Parent)
+
+
+@admin.register(Subject)
+class SubjectAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name_uz']
+
+
+@admin.register(SubjectTeacher)
+class GradeAdmin(admin.ModelAdmin):
+    list_display = ['id', 'teacher', 'grade', 'subject', 'name']
+
+    def name(self, obj):
+        return str(obj)
 
 
 @admin.register(Grade)

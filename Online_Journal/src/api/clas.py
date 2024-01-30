@@ -28,10 +28,6 @@ class GradeViewSet(viewsets.ModelViewSet):
         permission_classes = []
         if self.action == 'retrieve':
             permission_classes = [IsTeacherOrMentorOrAdmin]
-        elif self.action == 'create':
-            permission_classes = [IsAdminUser]
-        elif self.action == 'update':
-            permission_classes = [IsAdminUser]
-        elif self.action == 'list':
+        elif self.action in ['create', 'update', 'list', 'destroy']:
             permission_classes = [IsAdminUser]
         return [permission_class() for permission_class in permission_classes]

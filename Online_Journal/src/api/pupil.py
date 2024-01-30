@@ -7,8 +7,14 @@ from src.apps.jounal.serializers import (
     PupilCreateSerializer,
     PupilDeleteSerializer,
 )
-from src.apps.jounal.permissions import IsTeacherOrMentorOrAdmin, IsTeacherOrPupilOrParentOrAdmin
-from rest_framework.permissions import IsAdminUser
+from src.apps.jounal.permissions import (
+    IsTeacherOrMentorOrAdmin,
+    IsTeacherOrPupilOrParentOrAdmin
+)
+from rest_framework.permissions import (
+    IsAdminUser,
+    IsAuthenticated
+)
 
 
 class PupilsViewSet(viewsets.ModelViewSet):
@@ -29,10 +35,8 @@ class PupilsViewSet(viewsets.ModelViewSet):
         if self.action == 'retrieve':
             permission_classes = [IsTeacherOrPupilOrParentOrAdmin]
         elif self.action == 'list':
-            permission_classes = [IsTeacherOrMentorOrAdmin]
-        elif self.action == 'create':
-            permission_classes = [IsAdminUser]
-        elif self.action == 'update':
+            permission_classes = [IsAuthenticated, IsAdminUser or IsTeacherOrMentorOrAdmin]
+        elif self.action in ['create', 'update', 'destroy']:
             permission_classes = [IsAdminUser]
 
         return [permission_class() for permission_class in permission_classes]

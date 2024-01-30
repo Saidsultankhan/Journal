@@ -11,7 +11,7 @@ from src.api import (
 )
 
 urlpatterns = [
-    path('parent_create/', ParentsViewSet.as_view({'post': 'create'})),
+    path('parent_create/', ParentsViewSet.as_view({'post': 'create'}), name="parent-create"),
     path('parent_update/<int:pk>/', ParentsViewSet.as_view({'patch': 'update'})),
     path('parent_delete/<int:pk>/', ParentsViewSet.as_view({'delete': 'destroy'})),
     path('parent_detail/<int:pk>/', ParentsViewSet.as_view({'get': 'retrieve'})),

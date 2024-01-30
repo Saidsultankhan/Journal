@@ -32,9 +32,7 @@ class SubjectViewSet(viewsets.ModelViewSet):
             permission_classes = [TeacherOrAdmin]
         elif self.action == 'list':
             permission_classes = [AllowAny]
-        elif self.action == 'create':
-            permission_classes = [IsAdminUser]
-        elif self.action == 'update':
+        elif self.action in ['create', 'update', 'destroy']:
             permission_classes = [IsAdminUser]
 
         return [permission_class() for permission_class in permission_classes]

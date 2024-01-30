@@ -2,7 +2,67 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f072ea04-8453-403f-a437-4041945fe481" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Online-journal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Online-journal.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/api/clas.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/api/clas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/api/dairy.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/api/dairy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/api/parent.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/api/parent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/api/pupil.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/api/pupil.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/api/subject.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/api/subject.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/api/subject_teacher.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/api/subject_teacher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/api/teacher.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/api/teacher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/permissions/dairy_of_class/update.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/permissions/dairy_of_class/update.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/permissions/pupil/list.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/permissions/pupil/list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/permissions/subject/retrieve.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/permissions/subject/retrieve.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/serializers/clas/create.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/serializers/clas/create.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/serializers/dairy_of_class/create.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/serializers/dairy_of_class/create.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/serializers/dairy_of_class/delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/serializers/dairy_of_class/delete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/serializers/dairy_of_class/update.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/serializers/dairy_of_class/update.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/serializers/pupil/detail.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/serializers/pupil/detail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/apps/jounal/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/dairy_of_class/test_create.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/dairy_of_class/test_create.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/dairy_of_class/test_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/dairy_of_class/test_delete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/dairy_of_class/test_get.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/dairy_of_class/test_get.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/dairy_of_class/test_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/dairy_of_class/test_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/dairy_of_class/test_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/dairy_of_class/test_update.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/grade/test_create.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/grade/test_create.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/grade/test_get.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/grade/test_get.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/grade/test_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/grade/test_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/grade/test_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/grade/test_update.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/parent/test_create.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/parent/test_create.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/parent/test_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/parent/test_delete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/parent/test_get.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/parent/test_get.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/parent/test_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/parent/test_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/parent/test_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/parent/test_update.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/pupil/test_create.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/pupil/test_create.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/pupil/test_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/pupil/test_delete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/pupil/test_get.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/pupil/test_get.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/pupil/test_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/pupil/test_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/pupil/test_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/pupil/test_update.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject/test_create.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject/test_create.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject/test_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject/test_delete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject/test_get.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject/test_get.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject/test_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject/test_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject/test_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject/test_update.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject_teacher/test_create.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject_teacher/test_create.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject_teacher/test_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject_teacher/test_delete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject_teacher/test_get.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject_teacher/test_get.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject_teacher/test_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject_teacher/test_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject_teacher/test_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/subject_teacher/test_update.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/teacher/test_create.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/teacher/test_create.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/teacher/test_delete.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/teacher/test_delete.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/teacher/test_get.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/teacher/test_get.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/teacher/test_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/teacher/test_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/api/teacher/test_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/api/teacher/test_update.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/fixtures/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/fixtures/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/fixtures/grade.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/fixtures/grade.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/fixtures/parent.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/fixtures/parent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/fixtures/pupil.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/fixtures/pupil.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/fixtures/teacher.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/fixtures/teacher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Online_Journal/src/tests/fixtures/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/Online_Journal/src/tests/fixtures/user.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +86,9 @@
     <option name="autoscrollToSource" value="true" />
   </component>
   <component name="ProjectId" id="2YbxZBprsMsOAjJRTCpJOedKAug" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -42,12 +104,34 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Online_Journal/src/tests/api/grade" />
       <recent name="$PROJECT_DIR$/Online_Journal/src/apps/jounal/serializers/pupil" />
       <recent name="$PROJECT_DIR$/Online_Journal/src/apps/jounal/serializers" />
       <recent name="$PROJECT_DIR$/Online_Journal/src/apps" />
       <recent name="$PROJECT_DIR$/Online_Journal/jounal/serializers/dairy_of_class" />
-      <recent name="$PROJECT_DIR$/Online_Journal/jounal/permissions/for_pupil_views" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Python tests for test_create.test_grade_create" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Online-journal" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Online_Journal/src/tests/api/grade" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_create.test_grade_create&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Python tests for test_create.test_grade_create" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -69,6 +153,11 @@
       <workItem from="1703058127395" duration="4282000" />
       <workItem from="1703066034737" duration="129000" />
       <workItem from="1703066172717" duration="1636000" />
+      <workItem from="1705551730705" duration="3734000" />
+      <workItem from="1705585042538" duration="84142000" />
+      <workItem from="1706524261536" duration="2267000" />
+      <workItem from="1706597503594" duration="334000" />
+      <workItem from="1706609104031" duration="4000" />
     </task>
     <servers />
   </component>
@@ -87,6 +176,7 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Journal$.coverage" NAME=" Coverage Results" MODIFIED="1706167628269" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Online_Journal/src/tests/api/grade" />
     <SUITE FILE_PATH="coverage/Online_journal$test.coverage" NAME="test Coverage Results" MODIFIED="1701147923779" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Online_Journal" />
   </component>
 </project>
