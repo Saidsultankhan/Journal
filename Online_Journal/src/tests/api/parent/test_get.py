@@ -1,4 +1,5 @@
 import pytest
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -21,10 +22,13 @@ def test_parent_get(
 ):
     auth_client_data = request.getfixturevalue(client)
     auth_client = auth_client_data["client"]
+    url = reverse('parent-detail', kwargs={'pk': parent_create.id})
+
 
     if payload == 'BAD_REQUEST':
-        response = auth_client.get(f'/api/v1/parent_detail/{parent_create.id + 1}/')
+        url = reverse('parent-detail', kwargs={'pk': parent_create.id+1})
+        response = auth_client.get(url)
     else:
-        response = auth_client.get(f'/api/v1/parent_detail/{parent_create.id}/')
+        response = auth_client.get(url)
 
     assert response.status_code == status_code

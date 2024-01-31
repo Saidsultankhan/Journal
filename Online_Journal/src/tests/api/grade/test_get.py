@@ -1,8 +1,5 @@
 import pytest
-from rest_framework.test import APIClient
-
-
-api_client = APIClient()
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -22,14 +19,16 @@ def test_grade_get(
         payload,
         grade_create
 ):
-
     auth_client_data = request.getfixturevalue(client)
     auth_client = auth_client_data["client"]
+    url = reverse('grade-detail', kwargs={'pk': grade_create.id})
+
 
     if payload == 'BAD_REQUEST':
-        response = auth_client.get(f'/api/v1/class/{grade_create.id+1}/')
+        url = reverse('grade-detail', kwargs={'pk': grade_create.id+1})
+        response = auth_client.get(url)
     else:
-        response = auth_client.get(f'/api/v1/class/{grade_create.id}/')
+        response = auth_client.get(url)
 
     assert response.status_code == status_code
     

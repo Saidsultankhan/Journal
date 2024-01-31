@@ -1,5 +1,5 @@
-
 import pytest
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -22,9 +22,12 @@ def test_pupil_delete(
     auth_client_data = request.getfixturevalue(client)
     auth_client = auth_client_data['client']
 
+    url = reverse('pupil-detail', kwargs={'pk': pupil_create.id})
+
     if payload == 'NOT_FOUND':
-        response = auth_client.delete(f'/api/v1/pupil_delete/{pupil_create.id + 1}/')
+        url = reverse('pupil-detail', kwargs={'pk': pupil_create.id+1})
+        response = auth_client.delete(url)
     else:
-        response = auth_client.delete(f'/api/v1/pupil_delete/{pupil_create.id}/')
+        response = auth_client.delete(url)
 
     assert response.status_code == status_code

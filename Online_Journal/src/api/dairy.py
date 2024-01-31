@@ -7,7 +7,10 @@ from src.apps.jounal.serializers import (
     DairyUpdateSerializer,
     DairyDeleteSerializer,
 )
-from src.apps.jounal.permissions import DairyTeacher, DairyListTeacher
+from src.apps.jounal.permissions import (
+    DairyTeacher,
+    DairyListTeacher
+)
 from rest_framework.permissions import IsAuthenticated
 
 
@@ -56,14 +59,15 @@ class DairyViewSet(viewsets.ModelViewSet):
             'create': DairyCreateSerializer,
             'list': DairyOfClassSerializer,
             'delete': DairyDeleteSerializer,
+            'partial_update': DairyUpdateSerializer,
             'update': DairyUpdateSerializer
         }
-        return serializers.get(self.action)
+        return serializers.get(self.action, DairyDetailSerializer)
 
     def get_permissions(self):
         permission_classes = []
-        if self.action in ['retrieve', 'create', 'update', 'destroy']:
-            permission_classes = [IsAuthenticated, DairyTeacher]
+        if self.action in ['retrieve', 'create', 'partial_update', 'destroy', 'update']:
+            permission_classes = [DairyTeacher]
         elif self.action in ["list"]:
             permission_classes = [IsAuthenticated, DairyListTeacher]
 

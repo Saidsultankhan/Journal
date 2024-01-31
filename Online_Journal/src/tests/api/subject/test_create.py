@@ -1,4 +1,5 @@
 import pytest
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -34,7 +35,8 @@ def test_subject_create(
         if status == 'BAD_REQUEST':
             datas[status]['name_ru'] = ''
 
-    response = auth_client.post(f'/api/v1/subject_create/', datas[payload])
+    url = reverse('subject-list')
+    response = auth_client.post(url, datas[payload])
 
     if payload == 'SUCCESS':
         assert response.data['name_uz'] == 'Subject'

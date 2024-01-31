@@ -1,8 +1,5 @@
 import pytest
-from rest_framework.test import APIClient
-
-
-api_client = APIClient()
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -46,10 +43,13 @@ def test_pupil_update(
         if status == 'BAD_REQUEST':
             datas[status]['parent'] = 1000
 
+    url = reverse('pupil-detail', kwargs={'pk': pupil_create.id})
+
     if payload == 'NOT_FOUND':
-        response = auth_client.patch(f'/api/v1/pupil_update/{pupil_create.id + 1}/', datas[payload])
+        url = reverse('pupil-detail', kwargs={'pk': pupil_create.id+1})
+        response = auth_client.patch(url, datas[payload])
     else:
-        response = auth_client.patch(f'/api/v1/pupil_update/{pupil_create.id}/', datas[payload])
+        response = auth_client.patch(url, datas[payload])
 
     assert response.status_code == status_code
 

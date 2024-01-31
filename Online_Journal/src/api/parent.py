@@ -18,18 +18,18 @@ class ParentsViewSet(viewsets.ModelViewSet):
         serializers = {
             'retrieve': ParentDetailSerializer,
             'create': ParentCreateUpdateDeleteListSerializer,
-            'update': ParentCreateUpdateDeleteListSerializer,
+            'partial_update': ParentCreateUpdateDeleteListSerializer,
             'delete': ParentCreateUpdateDeleteListSerializer,
             'list': ParentCreateUpdateDeleteListSerializer,
 
         }
-        return serializers.get(self.action)
+        return serializers.get(self.action, ParentDetailSerializer)
 
     def get_permissions(self):
         permission_classes = []
         if self.action == 'retrieve':
             permission_classes = [IsAuthenticated, IsAdminUser or IsTeacherOrMentorOrAdmin]
-        elif self.action in ['create', 'update', 'list', 'destroy']:
+        elif self.action in ['create', 'partial_update', 'list', 'destroy']:
             permission_classes = [IsAdminUser]
 
         return [permission_class() for permission_class in permission_classes]

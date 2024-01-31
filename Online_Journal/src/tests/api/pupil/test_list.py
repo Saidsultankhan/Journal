@@ -1,4 +1,5 @@
 import pytest
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -20,7 +21,8 @@ def test_pupil_list(
     auth_client_data = request.getfixturevalue(client)
     auth_client = auth_client_data['client']
 
-    response = auth_client.get(f'/api/v1/pupils/')
+    url = reverse('pupil-list')
+    response = auth_client.get(url)
 
     if payload == 'SUCCESS':
         assert len(response.data) == len(pupils_list)

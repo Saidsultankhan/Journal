@@ -1,4 +1,5 @@
 import pytest
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -37,7 +38,10 @@ def test_subject_teacher_create(
         if status == 'BAD_REQUEST':
             datas[status]['grade'] = ''
 
-    response = auth_client.post(f'/api/v1/subject_teacher/create/', datas[payload])
+    url = reverse('subjectteacher-list')
+
+    response = auth_client.post(url, datas[payload])
+    
     if payload == 'SUCCESS':
         assert response.data['teacher'] == teacher_create.id
 

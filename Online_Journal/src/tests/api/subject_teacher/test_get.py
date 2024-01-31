@@ -1,5 +1,5 @@
 import pytest
-from rest_framework.test import APIClient
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -22,10 +22,13 @@ def test_subject_teacher_get(
     auth_client_data = request.getfixturevalue(client)
     auth_client = auth_client_data['client']
 
+    url = reverse('subjectteacher-detail', kwargs={'pk': subject_teacher_create.id})
+    
     if payload == 'NOT_FOUND':
-        response = auth_client.get(f'/api/v1/subject_teacher/{subject_teacher_create.id + 1}/')
+        url = reverse('subjectteacher-detail', kwargs={'pk': subject_teacher_create.id+1})
+        response = auth_client.get(url)
     else:
-        response = auth_client.get(f'/api/v1/subject_teacher/{subject_teacher_create.id}/')
+        response = auth_client.get(url)
 
     assert response.status_code == status_code
 

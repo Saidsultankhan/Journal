@@ -4,7 +4,7 @@ from src.apps.jounal.serializers import UnusedUserListSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
-
+    
     def get_queryset(self):
         teacher = self.request.query_params.get("teacher", None)
         pupil = self.request.query_params.get("pupil", None)
@@ -16,6 +16,8 @@ class UserViewSet(viewsets.ModelViewSet):
         )
 
         return queryset
+
+    queryset = User.objects.all()
 
     def get_serializer_class(self):
         if self.action == 'list':

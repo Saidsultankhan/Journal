@@ -1,8 +1,5 @@
 import pytest
-from rest_framework.test import APIClient
-from rest_framework.test import APIClient
-
-api_client = APIClient()
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -39,8 +36,10 @@ def test_teacher_list_dairy(
     pupil = pupil_factory.create(grade=grade)
     subject_teacher_factory.create(teacher_id=user.id, subject=subject, grade=grade)
     dairy = dairy_of_class_factory.create_batch(size=3, grade=grade, subject=subject, pupil=pupil)
+    url = reverse('dairyofclass-list')
 
-    response = auth_client.get(f'/api/v1/dairies/')
+    response = auth_client.get(url)
+
     if payload == 'SUCCESS':
         assert len(response.data) == len(dairy)
 

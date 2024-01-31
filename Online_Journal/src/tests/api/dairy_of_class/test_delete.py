@@ -1,8 +1,5 @@
 import pytest
-from rest_framework.test import APIClient
-
-
-api_client = APIClient()
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -30,8 +27,9 @@ def test_teacher_delete_dairy(
         user = teacher_create
 
     data = get_data(user)
+    url = reverse('dairyofclass-detail', kwargs={'pk': data[payload]['dairy_id']})
 
-    response = auth_client.delete(f'/api/v1/dairy_delete/{data[payload]["dairy_id"]}/')
+    response = auth_client.delete(url)
 
     assert response.status_code == status_code
 

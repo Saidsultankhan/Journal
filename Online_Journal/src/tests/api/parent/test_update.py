@@ -1,7 +1,5 @@
 import pytest
-from rest_framework.test import APIClient
-
-api_client = APIClient()
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -23,7 +21,7 @@ def test_parent_update(
         user_create
 ):
     auth_client_data = request.getfixturevalue(client)
-    auth_client, user = auth_client_data["client"], auth_client_data['user']
+    auth_client = auth_client_data["client"]
 
     statuses = ['FORBIDDEN', 'NOT_FOUND', 'SUCCESS', 'UNAUTHORIZED']
 
@@ -36,9 +34,13 @@ def test_parent_update(
             'user': user_create.id
         }
 
+    url = reverse('parent-detail', kwargs={'pk': parent_create.id})
+    
     if payload == 'NOT_FOUND':
-        response = auth_client.patch(f'/api/v1/parent_update/{parent_create.id+1}/', datas[payload])
+        url = reverse('parent-detail', kwargs={'pk': parent_create.id+1})
+
+        response = auth_client.patch(url, datas[payload])
     else:
-        response = auth_client.patch(f'/api/v1/parent_update/{parent_create.id}/', datas[payload])
+        response = auth_client.patch(url, datas[payload])
 
     assert response.status_code == status_code

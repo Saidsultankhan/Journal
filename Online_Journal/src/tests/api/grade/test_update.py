@@ -1,8 +1,5 @@
 import pytest
-from rest_framework.test import APIClient
-
-
-api_client = APIClient()
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -40,8 +37,8 @@ def test_grade_update(
         number -= 1
         if status == 'BAD_REQUEST':
             datas[status]['teacher'] = 1000
-
-    response = auth_client.patch(f'/api/v1/class_update/{grade_create.id}/', datas[payload])
+    url = reverse('grade-detail', kwargs={'pk': grade_create.id})
+    response = auth_client.patch(url, datas[payload])
 
     assert response.status_code == status_code
     

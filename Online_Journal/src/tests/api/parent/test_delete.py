@@ -1,7 +1,5 @@
 import pytest
-from rest_framework.test import APIClient
-
-api_client = APIClient()
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -19,15 +17,16 @@ def test_parent_delete(
         client,
         status_code,
         payload,
-        admin_create,
         parent_create
 ):
     auth_client_data = request.getfixturevalue(client)
     auth_client = auth_client_data["client"]
+    url = reverse('parent-detail', kwargs={'pk': parent_create.id})
 
     if payload == 'BAD_REQUEST':
-        response = auth_client.delete(f'/api/v1/parent_delete/{parent_create.id + 1}/')
+        url = reverse('parent-detail', kwargs={'pk': parent_create.id+1})
+        response = auth_client.delete(url)
     else:
-        response = auth_client.delete(f'/api/v1/parent_delete/{parent_create.id}/')
+        response = auth_client.delete(url)
 
     assert response.status_code == status_code

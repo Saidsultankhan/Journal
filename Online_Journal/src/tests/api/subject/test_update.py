@@ -1,8 +1,5 @@
 import pytest
-from rest_framework.test import APIClient
-
-
-api_client = APIClient()
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -36,10 +33,13 @@ def test_subject_update(
             'name_ru': 'Subject2',
         }
 
+    url = reverse('subject-detail', kwargs={'pk': subject_create.id})
+
     if payload == 'NOT_FOUND':
-        response = auth_client.patch(f'/api/v1/subject_update/{subject_create.id + 1}/', datas[payload])
+        url = reverse('subject-detail', kwargs={'pk': subject_create.id+1})
+        response = auth_client.patch(url, datas[payload])
     else:
-        response = auth_client.patch(f'/api/v1/subject_update/{subject_create.id}/', datas[payload])
+        response = auth_client.patch(url, datas[payload])
 
     if payload == 'SUCCESS':
         assert response.data['name_uz'] == 'Sultan'

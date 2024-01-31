@@ -1,8 +1,5 @@
 import pytest
-from rest_framework.test import APIClient
-
-
-api_client = APIClient()
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -29,8 +26,9 @@ def test_teacher_get_dairy(
     if client in ['un_authorized_client', 'parent_client']:
         user = teacher_create
     data = get_data(user)
+    url = reverse('dairyofclass-detail', kwargs={'pk': data[payload]['dairy_id']})
 
-    response = auth_client.get(f'/api/v1/dairy/{data[payload]["dairy_id"]}/')
+    response = auth_client.get(url)
 
     assert response.status_code == status_code
 
@@ -42,7 +40,6 @@ def get_data(
         grade_factory,
         pupil_factory,
         dairy_of_class_factory,
-        teacher_create_for_dairy,
 ):
     subject = subject_factory.create()
     grade = grade_factory.create()

@@ -1,8 +1,5 @@
 import pytest
-from rest_framework.test import APIClient
-
-
-api_client = APIClient()
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -19,13 +16,13 @@ def test_grade_list(
         client,
         status_code,
         payload,
-        admin_create,
         grades_list
 ):
     auth_client_data = request.getfixturevalue(client)
     auth_client = auth_client_data["client"]
-
-    response = auth_client.get(f'/api/v1/classes/')
+    url = reverse('grade-list')
+    
+    response = auth_client.get(url)
 
     if payload == 'SUCCESS':
         assert len(response.data) == len(grades_list)

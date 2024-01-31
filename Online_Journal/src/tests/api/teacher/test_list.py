@@ -1,4 +1,5 @@
 import pytest
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -20,7 +21,8 @@ def test_teacher_create(
     auth_client_data = request.getfixturevalue(client)
     auth_client = auth_client_data['client']
 
-    response = auth_client.get(f'/api/v1/teachers/')
+    url = reverse('teacher-list')
+    response = auth_client.get(url)
 
     assert response.status_code == status_code
 

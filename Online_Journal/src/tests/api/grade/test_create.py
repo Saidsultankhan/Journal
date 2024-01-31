@@ -1,9 +1,6 @@
 
 import pytest
-from rest_framework.test import APIClient
-
-api_client = APIClient()
-
+from django.urls import reverse
 
 @pytest.mark.parametrize(
     'client, status_code, payload',
@@ -23,8 +20,9 @@ def test_grade_create(
         admin_create,
         teacher_create,
 ):
+    url = reverse('grade-list')
     auth_client_data = request.getfixturevalue(client)
-    auth_client, user = auth_client_data["client"], auth_client_data["user"]
+    auth_client = auth_client_data["client"]
 
     statuses = ['FORBIDDEN', 'BAD_REQUEST', 'SUCCESS', 'UNAUTHORIZED']
 
@@ -40,7 +38,7 @@ def test_grade_create(
         if status == 'BAD_REQUEST':
             datas[status]['mentor'] = 1000
 
-    response = auth_client.post(f'/api/v1/class_create/', datas[payload])
+    response = auth_client.post(url, datas[payload])
 
     assert response.status_code == status_code
 

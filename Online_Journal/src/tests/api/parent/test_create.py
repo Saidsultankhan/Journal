@@ -1,7 +1,5 @@
 import pytest
-from rest_framework.test import APIClient
-
-api_client = APIClient()
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -40,6 +38,7 @@ def test_parent_create(
         if status == 'BAD_REQUEST':
             datas[status]['user'] = 1000
 
-    response = auth_client.post('/api/v1/parent_create/', datas[payload])
+    url = reverse('parent-list')
+    response = auth_client.post(url, datas[payload])
 
     assert response.status_code == status_code

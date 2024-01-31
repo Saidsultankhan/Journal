@@ -1,8 +1,5 @@
 import pytest
-from rest_framework.test import APIClient
-
-
-api_client = APIClient()
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -44,7 +41,8 @@ def test_pupil_create(
         if status == 'BAD_REQUEST':
             datas[status]['parent'] = 1000
 
-    response = auth_client.post(f'/api/v1/pupil_create/', datas[payload])
+    url = reverse('pupil-list')
+    response = auth_client.post(url, datas[payload])
 
     if payload == 'SUCCESS':
         assert response.data['name_uz'] == 'Sultan'

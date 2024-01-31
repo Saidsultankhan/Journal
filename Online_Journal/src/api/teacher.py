@@ -22,16 +22,16 @@ class TeacherViewSet(viewsets.ModelViewSet):
             'list': TeacherListSerializer,
             'retrieve': TeacherDetailSerializer,
             'create': TeacherCreateSerializer,
-            'update': TeacherUpdateSerializer,
+            'partial_update': TeacherUpdateSerializer,
             'delete': TeacherDeleteSerializer
         }
-        return serializers.get(self.action)
+        return serializers.get(self.action, TeacherDetailSerializer)
 
     def get_permissions(self):
         permission_classes = []
         if self.action == 'retrieve':
             permission_classes = [IsAuthenticated and IsAdminUser, IsTeacherOrMentorOrAdmin]
-        elif self.action in ['create', 'update', 'list', 'destroy']:
+        elif self.action in ['create', 'partial_update', 'list', 'destroy']:
             permission_classes = [IsAdminUser]
 
         return [permission_class() for permission_class in permission_classes]

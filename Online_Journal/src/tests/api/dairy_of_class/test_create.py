@@ -1,8 +1,5 @@
 import pytest
-from rest_framework.test import APIClient
-
-
-api_client = APIClient()
+from django.urls import reverse
 
 
 @pytest.mark.parametrize(
@@ -23,15 +20,17 @@ def test_dairy_create(
         get_data,
         teacher_create,
 ):
+    
     auth_client_data = request.getfixturevalue(client)
     auth_client, user = auth_client_data["client"], auth_client_data["user"]
+    url = reverse('dairyofclass-list')
 
     if client in ['un_authorized_client', 'parent_client']:
         user = teacher_create
 
     data = get_data(user)
 
-    response = auth_client.post(f'/api/v1/dairy_create/', data[payload])
+    response = auth_client.post(url, data[payload])
 
     if status_code == 201:
         assert response.data['pupil'] == data['SUCCESS']['pupil']
