@@ -33,11 +33,11 @@ class PupilDetailSerializer(PupilBaseSerializer):
                 pupil__id=obj.id
             ).aggregate(average_mark=Avg('mark'))['average_mark']
 
-            subject_marks = self.get_subject_marks(obj, subject)
+            # subject_marks = self.get_subject_marks(obj, subject)
             subjects_data.append({
                 'subject_name': subject,
                 'average_subject_mark': average_mark,
-                f'all_marks_in_{subject}': subject_marks
+                # f'all_marks_in_{subject}': subject_marks
             })
         return subjects_data
 

@@ -28,9 +28,8 @@ def test_dairy_update(
 
     datas = get_data(user)
     url = reverse('dairyofclass-detail', kwargs={'pk': datas["dairy"].id})
-    print(datas['data'][payload])
     response = auth_client.patch(url, datas['data'][payload])
-    print(response.status_code)
+    
     assert response.status_code == status_code
 
 

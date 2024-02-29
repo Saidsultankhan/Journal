@@ -32,7 +32,6 @@ def test_pupil_get(
         response = auth_client.get(url)
 
     if payload == 'SUCCESS':
-        print(response.data)
         assert response.data['user'] == pupil_create.user.id
 
     assert response.status_code == status_code

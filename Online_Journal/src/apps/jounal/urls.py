@@ -9,6 +9,9 @@ from src.api import (
     DairyViewSet,
     SubjectTeacherViewSet,
     ParentsViewSet,
+    ExcelGenerateViewSet,
+    PDFGeneratorView,
+    WordToPDFView,
 )
 
 router = DefaultRouter()
@@ -24,4 +27,7 @@ router.register(r'unused_users_list', UserViewSet, basename='user')
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('excel/', ExcelGenerateViewSet.as_view(), name='download_excel'),
+    path('pdf/', PDFGeneratorView.as_view(), name='download_pdf'),
+    path('word-to-pdf/', WordToPDFView.as_view(), name='word_to_pdf'),
 ]
