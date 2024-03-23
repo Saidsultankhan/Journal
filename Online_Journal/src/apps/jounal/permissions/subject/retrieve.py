@@ -10,5 +10,8 @@ class TeacherOrAdmin(permissions.BasePermission):
             return False
         if request.user.is_staff:
             return True
+
         if SubjectTeacher.objects.filter(teacher__user=request.user, subject=obj).exists():
             return True
+
+        return False

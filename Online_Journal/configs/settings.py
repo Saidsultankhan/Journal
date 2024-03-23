@@ -19,9 +19,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
     'djoser',
     'drf_yasg',
     'src.apps.jounal',
+
+
 
 ]
 
@@ -64,7 +67,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'journal',
         'USER': 'postgres',
-        'PASSWORD': '1234',
+        'PASSWORD': '0000',
         'HOST': 'Localhost',
         'PORT': '5432',
     }
@@ -114,6 +117,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication'
     ),
 }
 
